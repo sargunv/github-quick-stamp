@@ -32,3 +32,7 @@ mise run dev          # Chrome
 mise run dev:firefox  # Firefox
 mise run zip          # store-ready zips in .output/
 ```
+
+## License
+
+MIT

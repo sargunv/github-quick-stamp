@@ -6,6 +6,10 @@ import "package://github.com/jdx/hk/releases/download/v2.2.0/hk@2.2.0#/Builtins.
 
 local lintSteps = new Mapping<String, Step> {
   ["dprint"] = (Builtins.dprint)
+  ["actionlint"] {
+    glob = List(".github/workflows/*.yml", ".github/workflows/*.yaml")
+    check = "actionlint {{files}}"
+  }
   // dprint owns formatting, hence --no-fmt.
   ["vp-check"] {
     glob = List("**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx")

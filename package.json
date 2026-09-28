@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Approve GitHub pull requests from the Conversation tab with one click.",
+  "license": "MIT",
   "type": "module",
   "scripts": { "postinstall": "wxt prepare" },
   "devDependencies": {

@@ -7,7 +7,9 @@ lockfile = true
 [tools]
 "aqua:dprint/dprint" = "0.57.4"
 "aqua:jdx/hk" = "2.2.0"
+"aqua:koalaman/shellcheck" = "0.11.0"
 "aqua:pnpm/pnpm" = "12.6.0"
+"aqua:rhysd/actionlint" = "1.7.12"
 "core:node" = "24.21.0"
 
 [deps.pnpm]
