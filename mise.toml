@@ -1,0 +1,39 @@
+[settings]
+experimental = true
+pin = true
+minimum_release_age = "3d"
+lockfile = true
+
+[tools]
+"aqua:dprint/dprint" = "0.57.4"
+"aqua:jdx/hk" = "2.2.0"
+"aqua:pnpm/pnpm" = "12.6.0"
+"core:node" = "24.21.0"
+
+[deps.pnpm]
+auto = true
+
+[tasks.check]
+run = "hk check --all"
+
+[tasks.fix]
+run = "hk fix --all"
+
+[tasks.dev]
+description = "Run the extension in a dev browser (Chrome)"
+run = "pnpm exec wxt"
+
+[tasks."dev:firefox"]
+description = "Run the extension in a dev browser (Firefox)"
+run = "pnpm exec wxt -b firefox"
+
+[tasks.build]
+description = "Build unpacked extensions for Chrome and Firefox"
+run = ["pnpm exec wxt build", "pnpm exec wxt build -b firefox"]
+
+[tasks.zip]
+description = "Package store-ready zips for Chrome and Firefox"
+run = ["pnpm exec wxt zip", "pnpm exec wxt zip -b firefox"]
+
+[hooks]
+postinstall = ["hk install --mise"]

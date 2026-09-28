@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quick Stamp for GitHub</title>
+    <meta name="manifest.open_in_tab" content="true" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Quick Stamp for GitHub</h1>
+      <p>
+        Adds an <strong>Approve</strong> button to the “Review required” row
+        of the pull request merge box. Approvals are submitted through the
+        GitHub API with a personal access token, stored only in this browser.
+      </p>
+      <form id="form">
+        <label for="token">GitHub token</label>
+        <input
+          id="token"
+          type="password"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="ghp_… or github_pat_…"
+        />
+        <div class="actions">
+          <button type="submit">Save</button>
+          <span id="status" role="status"></span>
+        </div>
+      </form>
+      <h2>Creating a token</h2>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/settings/tokens/new?scopes=repo&description=Quick%20Stamp"
+            target="_blank"
+            rel="noreferrer"
+          >Classic token</a>
+          with the <code>repo</code> scope (<code>public_repo</code> is enough
+          for public repositories).
+        </li>
+        <li>
+          <a
+            href="https://github.com/settings/personal-access-tokens/new"
+            target="_blank"
+            rel="noreferrer"
+          >Fine-grained token</a>
+          with <em>Pull requests: Read and write</em>. The owning organization
+          may need to allow or approve fine-grained tokens.
+        </li>
+      </ul>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

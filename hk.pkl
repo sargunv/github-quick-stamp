@@ -1,0 +1,36 @@
+// Drives pre-commit, `mise run check`, and `mise run fix`.
+
+amends "package://github.com/jdx/hk/releases/download/v2.2.0/hk@2.2.0#/Config.pkl"
+
+import "package://github.com/jdx/hk/releases/download/v2.2.0/hk@2.2.0#/Builtins.pkl"
+
+local lintSteps = new Mapping<String, Step> {
+  ["dprint"] = (Builtins.dprint)
+  // dprint owns formatting, hence --no-fmt.
+  ["vp-check"] {
+    glob = List("**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx")
+    check = "pnpm exec vp check --no-fmt"
+    fix = "pnpm exec vp check --no-fmt --fix"
+  }
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true
+    stash = "git"
+    steps {
+      ...lintSteps
+    }
+  }
+  ["check"] {
+    steps {
+      ...lintSteps
+    }
+  }
+  ["fix"] {
+    fix = true
+    steps {
+      ...lintSteps
+    }
+  }
+}
